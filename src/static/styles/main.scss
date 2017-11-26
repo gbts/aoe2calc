@@ -53,6 +53,7 @@ tr {
 }
 
 .arena-stats {
+    margin-top: 140px;
     width: 100%;
     td {
         text-align: left;
@@ -75,7 +76,6 @@ tr {
 }
 
 #main {
-    font-family: monospace;
     margin: 0 0;
     padding: 0;
 }
@@ -90,4 +90,36 @@ tr {
 .form-control {
     max-width: 180px;
     font-weight: bold;
+}
+
+footer {
+    position: fixed;
+    height: 2em;
+    bottom: 1em;
+    width: 100%;
+    margin: 0 2em;
+    font-size: large;
+    iframe {
+        float: right;
+    }
+}
+
+body {
+    font-family: monospace;
+}
+
+select.form-control {
+    border: 1px solid black;
+    border-radius: 0px;
+    margin-right: 5px;
+    margin-bottom: 15px;
+}
+
+button.btn.btn-primary,
+button.btn.btn-danger
+{
+    background-color: transparent;
+    color: black;
+    border: 1px solid black;
+    border-radius: 0px;
 }

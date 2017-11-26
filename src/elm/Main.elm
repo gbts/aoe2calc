@@ -652,7 +652,7 @@ view model =
                             ]
                             , case model.leftPanel.selectedCiv of
                                 Just selectedCiv ->
-                                    div [class "col-md-5"] [
+                                    div [class "col-md-5 col-lg-3"] [
                                         div [class "techs"] [ techSelector model LeftPanel ]
                                         ,div [class "btn-group"] [
                                             button [class "btn btn-sm btn-primary", href "#", onClick (EnableAllTechs LeftPanel)] [text "all"]
@@ -662,7 +662,7 @@ view model =
                                 Nothing ->
                                     div [] []
 
-                            , div [class "col-md-7"] [
+                            , div [class "col-md-7 col-lg-9"] [
                                 case model.leftPanel.selectedUnit of
                                     Just selectedUnit ->
                                         let projectile = projectileForUnit model selectedUnit
@@ -702,7 +702,7 @@ view model =
                                 , unitSelector model RightPanel
                             ]
 
-                            , div [class "col-md-7"] [
+                            , div [class "col-md-7 col-lg-9"] [
                                 case model.rightPanel.selectedUnit of
                                     Just selectedUnit ->
                                         let projectile = projectileForUnit model selectedUnit
@@ -715,7 +715,7 @@ view model =
                             ]
                             , case model.rightPanel.selectedCiv of
                                 Just selectedCiv ->
-                                    div [class "col-md-5"] [
+                                    div [class "col-md-5 col-lg-3"] [
                                         div [class "techs"] [ techSelector model RightPanel ]
                                         ,div [class "btn-group"] [
                                             button [class "btn btn-sm btn-primary", href "#", onClick (EnableAllTechs RightPanel)] [text "all"]
