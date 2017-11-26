@@ -661,7 +661,7 @@ view model =
         , div [ id "panels", class "container-fluid", style [ ( "margin-top", "30px" )] ]
             [
                 div [class "row"] [
-                    div [class "col-md-5"] [
+                    div [class "col-md-4 col-lg-5"] [
                         div [class "row"] [
                             div [class "col-md-12 row"] [
                                 civSelector model LeftPanel
@@ -669,7 +669,7 @@ view model =
                             ]
                             , case model.leftPanel.selectedCiv of
                                 Just selectedCiv ->
-                                    div [class "col-md-5 col-lg-3"] [
+                                    div [class "col-md-5 col-lg-4"] [
                                         div [class "techs"] [ techSelector model LeftPanel ]
                                         ,div [class "btn-group"] [
                                             button [class "btn btn-sm btn-primary", href "#", onClick (EnableAllTechs LeftPanel)] [text "all"]
@@ -679,7 +679,7 @@ view model =
                                 Nothing ->
                                     div [] []
 
-                            , div [class "col-md-7 col-lg-9"] [
+                            , div [class "col-md-7 col-lg-8"] [
                                 case model.leftPanel.selectedUnit of
                                     Just selectedUnit ->
                                         let projectile = projectileForUnit model selectedUnit
@@ -693,7 +693,7 @@ view model =
                         ]
                     ]
                     -- Show the arena table only when both units are selected
-                    , div [class "col-md-2"] [
+                    , div [class "col-md-4 col-lg-2"] [
                         case model.leftPanel.selectedUnit of
                             Just selectedUnit1 ->
                                 case model.rightPanel.selectedUnit of
@@ -712,14 +712,14 @@ view model =
                                 div [] []
 
                     ]
-                    , div [class "col-md-5"] [
+                    , div [class "col-md-4 col-lg-5"] [
                         div [class "row"] [
                             div [class "col-md-12 row"] [
                                 civSelector model RightPanel
                                 , unitSelector model RightPanel
                             ]
 
-                            , div [class "col-md-7 col-lg-9"] [
+                            , div [class "col-md-7 col-lg-8"] [
                                 case model.rightPanel.selectedUnit of
                                     Just selectedUnit ->
                                         let projectile = projectileForUnit model selectedUnit
@@ -732,7 +732,7 @@ view model =
                             ]
                             , case model.rightPanel.selectedCiv of
                                 Just selectedCiv ->
-                                    div [class "col-md-5 col-lg-3"] [
+                                    div [class "col-md-5 col-lg-4"] [
                                         div [class "techs"] [ techSelector model RightPanel ]
                                         ,div [class "btn-group"] [
                                             button [class "btn btn-sm btn-primary", href "#", onClick (EnableAllTechs RightPanel)] [text "all"]

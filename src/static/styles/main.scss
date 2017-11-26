@@ -92,16 +92,19 @@ tr {
     font-weight: bold;
 }
 
-footer {
-    position: fixed;
-    height: 2em;
-    bottom: 1em;
-    width: 100%;
-    margin: 0 2em;
-    font-size: large;
-    iframe {
-        float: right;
+header {
+    div {
+        position: fixed;
+        top: 15px;
+        right: 150px;
     }
+    position: fixed;
+    top: 10px;
+    right: -30px;
+}
+
+#main {
+    padding-bottom: 3em;
 }
 
 body {
