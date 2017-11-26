@@ -19,6 +19,10 @@ import Model exposing (..)
 
 ages: List Int
 ages = [101, 102, 103]
+
+loom: List Int
+loom = [22]
+
 blacksmith1: List Int
 blacksmith1 = [67, 68, 75]
 blacksmith2: List Int
@@ -49,7 +53,7 @@ university: List Int
 university = [377, 93, 47]
 
 allTechs: List Int
-allTechs = [101, 102, 103, 67, 68, 75, 74, 76, 77, 81, 82, 80, 199, 200, 201, 211, 212, 219, 437, 436, 435, 39, 215, 90, 374, 375, 373, 230, 231, 252, 377, 93, 47]
+allTechs = [22, 101, 102, 103, 67, 68, 75, 74, 76, 77, 81, 82, 80, 199, 200, 201, 211, 212, 219, 437, 436, 435, 39, 215, 90, 374, 375, 373, 230, 231, 252, 377, 93, 47]
 
 
 getUniqueTechs: Model -> Int -> List Int
@@ -112,6 +116,7 @@ type Msg
     | ToggleTech PanelPosition String
     | EnableTech PanelPosition String
     | EnableAllTechs PanelPosition
+    | DisableAllTechs PanelPosition
     | DisableTech PanelPosition String
     | Refresh
     | NewDat (Result Http.Error Dat)
@@ -318,6 +323,17 @@ update msg model =
                     in
                     recurse model.rightPanel.civTechs (allTechs ++ getUniqueTechs model civ_id)
 
+        DisableAllTechs panelPosition ->
+            -- Disable Feudal age and Loom (all the rest depend on Feudal)
+            case panelPosition of
+                LeftPanel ->
+                    update (DisableTech LeftPanel "101") model
+                    |> Tuple.first
+                    |> update (DisableTech LeftPanel "22")
+                RightPanel ->
+                    update (DisableTech RightPanel "101") model
+                    |> Tuple.first
+                    |> update (DisableTech RightPanel "22")
 
         DisableTech panelPosition techID ->
             case model.dat of
@@ -588,6 +604,7 @@ techSelector model panelPosition =
                 (\civ ->
                     div [] [
                           fieldset [] (List.map (techOption model panelPosition) <| techsFromIDs ages dat)
+                        , fieldset [] (List.map (techOption model panelPosition) <| techsFromIDs loom dat)
                         , fieldset [] (List.map (techOption model panelPosition) <| techsFromIDs blacksmith1 dat)
                         , fieldset [] (List.map (techOption model panelPosition) <| techsFromIDs blacksmith2 dat)
                         , fieldset [] (List.map (techOption model panelPosition) <| techsFromIDs blacksmith3 dat)
@@ -656,7 +673,7 @@ view model =
                                         div [class "techs"] [ techSelector model LeftPanel ]
                                         ,div [class "btn-group"] [
                                             button [class "btn btn-sm btn-primary", href "#", onClick (EnableAllTechs LeftPanel)] [text "all"]
-                                            ,button [class "btn btn-sm btn-danger", href "#", onClick (DisableTech LeftPanel "101")] [text "none"]
+                                            ,button [class "btn btn-sm btn-danger", href "#", onClick (DisableAllTechs LeftPanel)] [text "none"]
                                         ]
                                     ]
                                 Nothing ->
@@ -719,7 +736,7 @@ view model =
                                         div [class "techs"] [ techSelector model RightPanel ]
                                         ,div [class "btn-group"] [
                                             button [class "btn btn-sm btn-primary", href "#", onClick (EnableAllTechs RightPanel)] [text "all"]
-                                            ,button [class "btn btn-sm btn-danger", href "#", onClick (DisableTech RightPanel "101")] [text "none"]
+                                            ,button [class "btn btn-sm btn-danger", href "#", onClick (DisableAllTechs RightPanel)] [text "none"]
                                         ]
                                     ]
                                 Nothing ->
