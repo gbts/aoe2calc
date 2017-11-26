@@ -1,0 +1,93 @@
+$icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
+@import '~bootstrap-sass/assets/stylesheets/bootstrap/_mixins.scss';
+@import '~bootstrap-sass/assets/stylesheets/_bootstrap.scss';
+
+img { 
+    image-rendering: optimizeSpeed;             /* STOP SMOOTHING, GIVE ME SPEED  */
+    image-rendering: -moz-crisp-edges;          /* Firefox                        */
+    image-rendering: -o-crisp-edges;            /* Opera                          */
+    image-rendering: -webkit-optimize-contrast; /* Chrome (and eventually Safari) */
+    image-rendering: pixelated; /* Chrome */
+    image-rendering: optimize-contrast;         /* CSS3 Proposed                  */
+    -ms-interpolation-mode: nearest-neighbor;   /* IE8+                           */
+
+}
+
+.row {
+    margin: 0;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.unit {
+    &.left {
+        img {
+            float: right;
+        }
+    }
+    &.right {
+    }
+}
+
+tr {
+    border: 1px solid black;
+}
+
+
+.unit-stats {
+    width: 100%;
+    table-layout: fixed;
+    td {
+        text-align: left;
+        padding: 0 5px;
+    }
+    .divider, .divider * {
+        padding-top: 20px;
+        border: none;
+    }
+    td + td {
+        text-align: right;
+    }
+}
+
+.arena-stats {
+    width: 100%;
+    td {
+        text-align: left;
+        padding: 0 5px;
+    }
+    .divider, .divider * {
+        padding-top: 20px;
+        border: none;
+    }
+    td + td {
+        text-align: center
+    }
+    td + td + td {
+        text-align: right;
+    }
+}
+
+#techs {
+    float: left;
+}
+
+#main {
+    font-family: Georgia;
+    margin: 0 0;
+    padding: 0;
+}
+
+
+#panels {
+    margin: 0 0;
+    padding: 0;
+}
+
+// can't be bothered to wrap selects with row/cols properly
+.form-control {
+    max-width: 180px;
+    font-weight: bold;
+}
