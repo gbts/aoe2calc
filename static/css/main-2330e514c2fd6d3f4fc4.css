@@ -5817,15 +5817,17 @@ tr {
   max-width: 180px;
   font-weight: bold; }
 
-footer {
+header {
   position: fixed;
-  height: 2em;
-  bottom: 1em;
-  width: 100%;
-  margin: 0 2em;
-  font-size: large; }
-  footer iframe {
-    float: right; }
+  top: 10px;
+  right: -30px; }
+  header div {
+    position: fixed;
+    top: 15px;
+    right: 150px; }
+
+#main {
+  padding-bottom: 3em; }
 
 body {
   font-family: monospace; }
